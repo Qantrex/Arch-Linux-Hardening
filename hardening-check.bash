@@ -99,13 +99,6 @@ for file in /etc/master.passwd /etc/shadow /etc/gshadow; do
     fi
 done
 
-# Check if cron job for daily system updates is created
-if [ -e /etc/cron.daily/system_update ] && [ -x /etc/cron.daily/system_update ]; then
-    echo -e "${GREEN}Daily system update script exists and is executable.${NC}"
-else
-    echo -e "${RED}Daily system update script does NOT exist or is NOT executable.${NC}"
-fi
-
 # Check if system is updated
 if pacman -Q --upgrades > /dev/null; then
     echo -e "${RED}There are updates available.${NC}"
